@@ -1,10 +1,42 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { Button } from 'react-bootstrap'
 
-const App = () => (
-  <div>
-    Apps
-  </div>
+class App extends Component {
+  state = {
+    gifts: []
+  }
 
-)
+  addGift = () => {
+    const { gifts } = this.state
+
+    const ids = gifts.map(gift => gift.id)
+
+    const maxId = ids.length > 0 ? Math.max(...ids) : 0
+
+    gifts.push({ id: maxId + 1 })
+
+    this.setState({ gifts })
+  }
+
+  render () {
+    return (
+      <div>
+        <h2>Gift Giver</h2>
+        <div className="gift-list">
+          {
+            this.state.gifts.map((gift, i) => {
+              return (
+                <span key={i}>{}</span>
+              )
+            })
+          }
+        </div>
+        <Button
+          className="btn-add"
+          onClick={this.addGift}>Click</Button>
+      </div>
+    )
+  }
+}
 
 export default App
