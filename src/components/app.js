@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
+import Gift from './gift'
 
 class App extends Component {
   state = {
@@ -20,13 +21,13 @@ class App extends Component {
 
   render () {
     return (
-      <div>
+      <div className="container text-center">
         <h2>Gift Giver</h2>
         <div className="gift-list">
           {
             this.state.gifts.map((gift, i) => {
               return (
-                <span key={i}>{}</span>
+                <Gift key={i}>{}</Gift>
               )
             })
           }
