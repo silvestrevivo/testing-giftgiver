@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
 class Gift extends Component {
   state = {
@@ -23,9 +24,17 @@ class Gift extends Component {
               onChange={event => this.setState({ present: event.target.value })} />
           </FormGroup>
         </Form>
+        <Button
+          className="btn-remove"
+          onClick={() => this.props.removeGift(this.props.gift.id)}>Remove Gift</Button>
       </div>
     )
   }
+}
+
+Gift.propTypes = {
+  removeGift: PropTypes.func,
+  gift: PropTypes.object
 }
 
 export default Gift
