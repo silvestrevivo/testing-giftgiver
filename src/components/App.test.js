@@ -17,23 +17,17 @@ describe('App', () => {
     const id = 1
 
     beforeEach(() => {
+      app.setState({ gifts: [] })
       app.find('.btn-add').simulate('click')
+      app.update()
       // beforeEach means what is going to occur before eacht it()
     })
 
-    // if you want to reset them before each test:
-    afterEach(() => {
-      app.setState({ gifts: [] })
-    }) // so become reset eacht it() and you can test them separetly
-    // other
-
     it('adds a new gift to `state`', () => {
-      // console.log(app.debug())
       expect(app.state().gifts).toEqual([{ id }])
     })
 
     it('adds a new gift to render list', () => {
-      // console.log(app.debug())
       expect(app.find('.gift-list').children().length).toEqual(1)
     })
 
